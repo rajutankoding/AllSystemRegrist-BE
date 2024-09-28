@@ -1,61 +1,75 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Customers', {
-      id: {
+    await queryInterface.createTable("Pelanggan", {
+      idPelanggan: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       nama: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       ktp: {
-        type: Sequelize.BIGINT
+        type: Sequelize.BIGINT,
       },
-      noHp: {
-        type: Sequelize.STRING
+      hoHp: {
+        type: Sequelize.STRING,
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-      jk: {
-        type: Sequelize.BOOLEAN
+      nip: {
+        type: Sequelize.STRING,
+      },
+      gender: {
+        type: Sequelize.ENUM,
+        values: ["L", "P"],
       },
       tglLahir: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       golDarah: {
-        type: Sequelize.BOOLEAN
-      },
-      alamat: {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM,
+        values: ["A", "B", "AB", "O"],
       },
       sttNikah: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.ENUM,
+        values: ["Belum Menikah", "Menikah", "Cerai"],
       },
       agama: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.ENUM,
+        values: ["Islam", "Kristen", "Katolik", "Hindu", "Budha", "Privacy"],
+        defaultValue: "Privacy",
       },
       tglDaftar: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       noPeserta: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+      },
+      alergi: {
+        type: Sequelize.STRING,
+      },
+      riwayatMedis: {
+        type: Sequelize.TEXT,
+      },
+      alamat: {
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Customers');
-  }
+    await queryInterface.dropTable("Pelanggan");
+  },
 };
